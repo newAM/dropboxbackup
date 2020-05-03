@@ -17,7 +17,7 @@ Create a JSON file with a list of dictionaries.
 
 Each dictionary has two keys, "path", and "name".
 
-See included JSON files for example.
+See included JSON files for an example.
 
 ```bash
 python3.8 backup.py my_config.json

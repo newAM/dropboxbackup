@@ -1,0 +1,7 @@
+[
+    {"path": "/etc/", "name": "etc"},
+    {"path": "/var/spool/cron/crontabs/", "name": "cron"},
+    {"path": "/home/alex/docker/", "name": "docker"},
+    {"path": "/root/", "name": "root"},
+    {"path": "/var/snapraid.content", "name": "snapraid_content"}
+]

@@ -1,0 +1,4 @@
+[
+    {"path": "/etc/", "name": "etc"},
+    {"path": "/var/spool/cron/crontabs/", "name": "cron"}
+]

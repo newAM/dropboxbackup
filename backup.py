@@ -28,9 +28,7 @@ def dropbox_upload(dbx: Dropbox, source_path: str, destination_path: str):
                 if file_size - f.tell() <= chunk_size:
                     dbx.files_upload_session_finish(f.read(chunk_size), cursor, commit)
                 else:
-                    dbx.files_upload_session_append_v2(
-                        f.read(chunk_size), cursor.session_id, cursor.offset
-                    )
+                    dbx.files_upload_session_append_v2(f.read(chunk_size), cursor)
                     cursor.offset = f.tell()
 
 

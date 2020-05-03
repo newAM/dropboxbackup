@@ -22,3 +22,5 @@ See included JSON files for an example.
 ```bash
 python3.8 backup.py my_config.json
 ```
+
+Logs will be created under `/var/log/dropboxbackup/`.

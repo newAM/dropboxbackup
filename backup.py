@@ -25,7 +25,9 @@ def dropbox_upload(dbx: Dropbox, source_path: str, destination_path: str):
     if file_size <= chunk_size:
         logger.debug("uploading archive")
         with open(source_path, "rb") as f:
-            dbx.files_upload(f.read(), destination_path)
+            dbx.files_upload(
+                f.read(), destination_path, mode=dropbox.files.WriteMode.overwrite
+            )
     else:
         logger.debug(f"uploading archive in {chunk_size:,} byte chunks")
         with open(source_path, "rb") as f:
@@ -33,7 +35,9 @@ def dropbox_upload(dbx: Dropbox, source_path: str, destination_path: str):
             cursor = dropbox.files.UploadSessionCursor(
                 session_id=session.session_id, offset=f.tell()
             )
-            commit = dropbox.files.CommitInfo(path=destination_path)
+            commit = dropbox.files.CommitInfo(
+                path=destination_path, mode=dropbox.files.WriteMode.overwrite
+            )
             chunk = 1
             while f.tell() < file_size:
                 chunk += 1
@@ -104,5 +108,6 @@ if __name__ == "__main__":
 
         dropbox_upload(dbx, archive_path, f"/{args.base}/{name}.zip")
 
-        logger.debug("removing archive {name}")
+        logger.debug(f"removing archive {name}")
         os.remove(archive_path)
+    logger.info("all backups completed")

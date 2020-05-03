@@ -1,2 +1,2 @@
-dropbox==1.25.7
+dropbox==10.1.1
 keyring==19.2.0
